@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/datalist.css">
+    <link rel="stylesheet" href="assets/css/condemn.css">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,21 +40,10 @@
     <div class="container intro__middle">
         <div class="condemn__box">
             <fieldset class="condemn__form">
-                <label for="exampleDataList" class="form-label">Datalist example</label>
-                <input class="form-control" list="condemner__datalist" id="my__own__id1" placeholder="Type to search...">
-                
-                <datalist class="condemner__list__container" id="condemner__datalist">
-                    <script id="condemner__template" type="text/x-handlebars-template">
-                        {{#each data}}
-                            <option value="{{name}}">{{name}}</option>
-                        {{/each}}
-                    </script>
-                </datalist>
-            </fieldset>
-
-            <fieldset class="condemn__form">                
-                <label for="exampleDataList" class="form-label">Datalist example</label>
-                <input class="form-control" list="convicted__datalist" id="my__own__id2" placeholder="Type to search...">
+                <label for="convicted__datalist" class="form-label">
+                    Осужденный
+                </label>
+                <input class="form-control" list="convicted__datalist" id="convicted__input" placeholder="Type to search...">
                 
                 <datalist class="convicted__list__container" id="convicted__datalist">
                     <script id="convicted__template" type="text/x-handlebars-template">
@@ -64,6 +53,27 @@
                     </script>
                 </datalist>
             </fieldset>
+
+            <fieldset class="condemn__form">                
+                <label for="article__datalist" class="form-label">
+                    Статья
+                </label>
+                <input class="form-control" list="article__datalist" id="article__input" placeholder="Type to search...">
+                
+                <datalist class="article__list__container" id="article__datalist">
+                    <script id="article__template" type="text/x-handlebars-template">
+                        {{#each data}}
+                            <option value="{{name}}">{{name}}</option>
+                        {{/each}}
+                    </script>
+                </datalist>
+            </fieldset>
+        </div>
+
+        <div class="condemn__send">
+            <a class="condemn__button" id="condemn" href="#">
+                ОСУДИТЬ!!!
+            </a>
         </div>
     </div> 
 </div>
@@ -72,8 +82,5 @@
 <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script type="text/javascript" src="assets/scritps/userClient.js"></script>
 <script type="text/javascript" src="assets/scritps/main.js"></script>
-
-<!-- dynamic loading datalist-->
-<script type="text/javascript" src="assets/scritps/datalist.js"></script>
 </body>
 </html>
