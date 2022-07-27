@@ -48,7 +48,7 @@
                 <datalist class="convicted__list__container" id="convicted__datalist">
                     <script id="convicted__template" type="text/x-handlebars-template">
                         {{#each data}}
-                            <option value="{{name}}">{{name}}</option>
+                            <option value="{{username}}" data-value="{{id}}"></option>
                         {{/each}}
                     </script>
                 </datalist>
@@ -63,7 +63,7 @@
                 <datalist class="article__list__container" id="article__datalist">
                     <script id="article__template" type="text/x-handlebars-template">
                         {{#each data}}
-                            <option value="{{name}}">{{name}}</option>
+                            <option value="{{name}}" id="article__list__item__{{id}}">{{name}}</option>
                         {{/each}}
                     </script>
                 </datalist>

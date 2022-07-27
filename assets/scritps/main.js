@@ -3,9 +3,8 @@ const config = {
     baseUrl: 'http://localhost:8000'
 }
 
-$(document).ready(function() {
-    var client = new UserClient(config.baseUrl);
-	const promise2 = client.login('string', 'string').then(item => {
+function initArticleTemplate(client) {
+	return client.login('string', 'string').then(item => {
 		client.getAllArticles(item.token).then(value => {
 			console.log(value)
 			var characterTemplate = $("#article__template").html();
@@ -15,8 +14,10 @@ $(document).ready(function() {
 			$(".article__list__container").html(compiledCharacterTemplate(value));
 		})
 	});
+}
 
-    const promise1 = client.getAllUsers().then(value => {
+function initConvictedTemplate(client) {
+	return client.getAllUsers().then(value => {
 		console.log(value)
         var characterTemplate = $("#convicted__template").html();
 
@@ -24,8 +25,19 @@ $(document).ready(function() {
 
         $(".convicted__list__container").html(compiledCharacterTemplate(value));
     });
+}
 
-	Promise.all([promise1, promise2]).then(_ => {
-		initDataList()
-	})
+$(document).ready(function() {
+    var client = new UserClient(config.baseUrl);
+	const firstPromise = initArticleTemplate(client);
+    const secondPromise = initConvictedTemplate(client);
+
+	Promise.all([firstPromise, secondPromise]).then(_ => {
+		$("#condemn").click(sendCondemn)
+	});
 });
+
+function sendCondemn() {
+	var value = $("#convicted__input").val()
+	var id = $('#convicted__datalist [value="' + value + '"]').data('value')
+}
